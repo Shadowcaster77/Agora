@@ -3,7 +3,6 @@ Savannah-sc is compatible with DPDK library BBDev
 
 ## DPDK installation
   * [DPDK](http://core.dpdk.org/download/) version 21.11.2 lts
-    Make sure 
   * It is required you enable hugepage support and run agora under sudo permissions (LD_LIBRARY_PATH=${LD_LIBRARY_PATH}).
     <pre>
     $ sudo sh -c "echo 4 > /sys/devices/system/node/node0/hugepages/hugepages-1048576kB/nr_hugepages"
@@ -29,6 +28,10 @@ Savannah-sc is compatible with DPDK library BBDev
     $ sudo ldconfig
     </pre>
     the MLX poll mode driver will be autodetected and installed if required
+
+## Integrate ACC100 to system:
+
+
 
 ## Building and running Agora and emulated RRU with DPDK
  * Build Agora and emulated RRU with DPDK enabled.
