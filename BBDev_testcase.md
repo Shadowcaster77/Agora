@@ -59,15 +59,19 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
    0000:17:00.0 'Device 0d5c' drv=igb_uio unused=vfio-pci
    ```
 * Setup ACC100 by binding driver to device and update the device:
-  <pre>
+  ```
   $ modprobe igb_uio
-## to make sure igb_uio is there
+  # to make sure igb_uio is there
   $ lsmod 
   Module                  Size  Used by
   igb_uio                24576  0
   uio                    20480  1 igb_uio
   vtsspp                532480  0
-  <pre>
+
+  $ sudo dpdk-devbind.py -b igb_uio <ACC100_ADDR>
+  $ echo 2 | sudo tee /sys/bus/pci/devices/<ACC100_ADDR>/max_vfs
+  ```
+* Configure the card using [pf_bb_config](https://github.com/intel/pf-bb-config).
 
 ## Building and running Agora and emulated RRU with DPDK
  * Build Agora and emulated RRU with DPDK enabled.
