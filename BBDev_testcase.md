@@ -29,7 +29,7 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
     </pre>
     the MLX poll mode driver will be autodetected and installed if required
 
-## Integrate ACC100 to system:
+## ACC100 System requirements:
  * ACC100 requires PCI Express x16 slot. 
  * If you are trying to run virtual functions, please make sure BIOS is providing enough MMIO space.
  * Please make sure SR-IOV is enabled in BIOS: F2 BIOS > System BIOS > Integrated Devices > SR-IOV Global Enable
