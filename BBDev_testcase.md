@@ -48,7 +48,7 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
     $ sudo modprove uio
     $ sudo insmod igb_uio.ko
     ```
-   * To gener
+   * Identify ACC100 address, you can either use `ddddd`
 
 ## Building and running Agora and emulated RRU with DPDK
  * Build Agora and emulated RRU with DPDK enabled.
