@@ -45,10 +45,8 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
     ```
     $ cd <folder_location>/dpdk-kmods-e721c733cd24206399bebb8f0751b0387c4c1595/linux/igb_uio
     $ sudo make
-    ```
-   * modprobe uio as:
-    ```
     $ sudo modprove uio
+    $ sudo insmod igb_uio.ko
     ```
    * To gener
 
