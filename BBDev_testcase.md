@@ -72,32 +72,43 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
   $ echo 2 | sudo tee /sys/bus/pci/devices/<ACC100_ADDR>/max_vfs
   ```
 * Configure the card using [pf_bb_config](https://github.com/intel/pf-bb-config).
+  ```
+  $ cd <pf_bb_config folder>
+  $ sudo ./pf_bb_config ACC100 -c acc100/acc100_config_pf_4g5g.cfg
+  == pf_bb_config Version v23.03-0-gb27a4f8 ==
+  Sun Aug  6 22:41:59 2023:INFO:Queue Groups: 2 5GUL, 2 5GDL, 2 4GUL, 2 4GDL
+  Sun Aug  6 22:41:59 2023:INFO:Configuration in PF mode
+  Sun Aug  6 22:41:59 2023:INFO: ROM version MM 99AD92
+  Sun Aug  6 22:42:00 2023:INFO:DDR Training completed in 1300 ms
+  Sun Aug  6 22:42:01 2023:INFO:PF ACC100 configuration complete
+  Sun Aug  6 22:42:01 2023:INFO:ACC100 PF [0000:17:00.0] configuration complete!
+  ```
+## Running default validation test:
+* Please quickly run a the default validation test several times to make sure ACC100 works normally on your device:
+  ```
+  $ cd <dpdk_folder>/app/test-bbdev
+  $ sudo dpdk-test-bbdev -c F0 -a <ACC100_ADDR> -- -c validation -v ./ldpc_dec_default.data
+  # you are expect to see the following which indicates you passed the validation test:
+  ===========================================================
+  Starting Test Suite : BBdev Validation Tests
+  Test vector file = ./ldpc_dec_default.data
+  + ------------------------------------------------------- +
+  == test: validation
+  dev:18:00.0, burst size: 32, num ops: 64, op type: RTE_BBDEV_OP_LDPC_DEC
+  Operation latency:
+  	avg: 68312 cycles, 26.2738 us
+  	min: 62482 cycles, 24.0315 us
+  	max: 74142 cycles, 28.5162 us
+  TestCase [ 0] : validation_tc passed
+   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +
+   + Test Suite Summary : BBdev Validation Tests
+   + Tests Total :        1
+   + Tests Skipped :      0
+   + Tests Passed :       1
+   + Tests Failed :       0
+   + Tests Lasted :       51.9312 ms
+   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ +
+  ```
+  **NOTE** If the total elapsed time takes too long, please double check with your system settings
 
-## Building and running Agora and emulated RRU with DPDK
- * Build Agora and emulated RRU with DPDK enabled.
-    <pre>
-    $ cd Agora
-    $ mkdir build
-    $ cd build
-    $ cmake -DUSE_DPDK=true ..
-    $ make -j
-    </pre>
-
- * Run Agora with emulated RRU traffic with DPDK 
-   * **NOTE**: For DPDK test, we run Agora and the emulated RRU on two different machines.
-     Most DPDK installations will require you to run under sudo permissions. 
-   * To generate data file, first return to the base directory (`cd ..`), then run
-   <pre>
-   $ ./build/data_generator --conf_file files/config/ci/tddconfig-sim-ul.json
-   </pre>
-   * To start Agora with uplink configuration, on one machine, run 
-   <pre>
-   $ sudo LD_LIBRARY_PATH=${LD_LIBRARY_PATH} ./build/agora --conf_file files/config/ci/tddconfig-sim-ul.json
-   </pre>
-    
-   * To start the emulated RRU with uplink configuration, on another machine, run
-   <pre>
-   $ sudo LD_LIBRARY_PATH=${LD_LIBRARY_PATH} ./build/sender --num_threads=2 --core_offset=1 --enable_slow_start=1 --conf_file=files/config/ci/tddconfig-sim-ul.json --server_mac_addr=FF:FF:FF:FF:FF:FF
-   </pre>
-   Change the MAC address in `--server_mac_addr=` to the MAC address of the NIC used by Agora. 
-   
+## Build own test case:
