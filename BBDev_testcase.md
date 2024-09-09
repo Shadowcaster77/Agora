@@ -34,10 +34,10 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
  * If you are trying to run virtual functions, please make sure BIOS is providing enough MMIO space.
  * Please also make sure SR-IOV is enabled in BIOS: F2 BIOS > System BIOS > Integrated Devices > SR-IOV Global Enable
  * Please make sure the following is added to your GRUB settings:
-   <pre>
+   ```
     GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on amd_iommu=on quiet splash vfio-pci.ids=ca:00.0 vfio_pci.enable_sriov=1 vfio_pci.disable_idle_d3=1 hugepage=64"
     GRUB_CMDLINE_LINUX="intel_iommu=on amd_iommu=on iommu=pt"
-   <pre>
+   ```
 
 ## Building and running Agora and emulated RRU with DPDK
  * Build Agora and emulated RRU with DPDK enabled.
