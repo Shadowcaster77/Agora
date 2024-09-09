@@ -50,6 +50,13 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
     ```
    * Identify ACC100 address, you can either use `lspci` or `dpdk-devbind.py --status`, example output are as the following:
    ```
+   $ lspci 
+   17:00.0 Processing accelerators: Intel Corporation Device 0d5c
+
+   $ dpdk-devbind.py --status
+   Baseband devices using DPDK-compatible driver
+   =============================================
+   0000:17:00.0 'Device 0d5c' drv=igb_uio unused=vfio-pci
 
    ```
 
