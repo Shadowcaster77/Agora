@@ -1,4 +1,4 @@
-Savannah-sc is compatible with DPDK library BBDev
+Savannah-sc is compatible with DPDK library BBDev, this README page aims to help connect ACC100 to your server and start construct your own unit test/testcase. 
 * Savannah-sc has been tested with dpdk version 21.11.2lts
 
 ## DPDK installation
@@ -30,7 +30,7 @@ Savannah-sc is compatible with DPDK library BBDev
     the MLX poll mode driver will be autodetected and installed if required
 
 ## Integrate ACC100 to system:
-
+ * ACC100 requires
 
 
 ## Building and running Agora and emulated RRU with DPDK
