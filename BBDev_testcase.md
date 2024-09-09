@@ -48,7 +48,7 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
     $ sudo modprove uio
     $ sudo insmod igb_uio.ko
     ```
-   * Identify ACC100 address, you can either use `lspci` or `dpdk-devbind.py --status`, example output are as the following:
+* Identify ACC100 address, you can either use `lspci` or `dpdk-devbind.py --status`, example output are as the following:
    ```
    $ lspci 
    17:00.0 Processing accelerators: Intel Corporation Device 0d5c
@@ -57,8 +57,17 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
    Baseband devices using DPDK-compatible driver
    =============================================
    0000:17:00.0 'Device 0d5c' drv=igb_uio unused=vfio-pci
-
    ```
+* Setup ACC100 by binding driver to device and update the device:
+  <pre>
+  $ modprobe igb_uio
+## to make sure igb_uio is there
+  $ lsmod 
+  Module                  Size  Used by
+  igb_uio                24576  0
+  uio                    20480  1 igb_uio
+  vtsspp                532480  0
+  <pre>
 
 ## Building and running Agora and emulated RRU with DPDK
  * Build Agora and emulated RRU with DPDK enabled.
