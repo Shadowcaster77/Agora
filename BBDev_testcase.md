@@ -1,9 +1,9 @@
-Agora is compatable with and accelerated by the DPDK library.
-* Agora has been tested with dpdk version 21.11.1lts with both Intel 40 GbE and Mellanox 100 GbE NICs
+Savannah-sc is compatible with DPDK library BBDev
+* Savannah-sc has been tested with dpdk version 21.11.2lts
 
 ## DPDK installation
-  * [DPDK](http://core.dpdk.org/download/) version 21.11.1 lts
-    Intel 40 GbE and Mellanox 100 GbE NICs in Agora.
+  * [DPDK](http://core.dpdk.org/download/) version 21.11.2 lts
+    Make sure 
   * It is required you enable hugepage support and run agora under sudo permissions (LD_LIBRARY_PATH=${LD_LIBRARY_PATH}).
     <pre>
     $ sudo sh -c "echo 4 > /sys/devices/system/node/node0/hugepages/hugepages-1048576kB/nr_hugepages"
