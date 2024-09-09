@@ -41,11 +41,15 @@ Savannah-sc is compatible with DPDK library BBDev, this README page aims to help
 ## ACC100 initialization:
  * We will present how to use igb_uio as the driver to drive ACC100
  * Download [dpdk-kmods](http://git.dpdk.org/dpdk-kmods/commit/?id=e721c733cd24206399bebb8f0751b0387c4c1595). Please follow the instructions to install dpdk-dmods. 
+   * To build igb_uio driver:
+    ```
+    $ cd <folder_location>/dpdk-kmods-e721c733cd24206399bebb8f0751b0387c4c1595/linux/igb_uio
+    $ sudo make
+    ```
    * modprobe uio as:
     ```
     $ sudo modprove uio
     ```
-     
    * To gener
 
 ## Building and running Agora and emulated RRU with DPDK
